@@ -1,0 +1,132 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================================
+   GLOBAL BACKGROUND (Dark Bluish Gradient)
+   ========================================================= */
+
+.main-wrapper {
+  background: linear-gradient(
+    135deg,
+    #0f2027 0%,
+    #203a43 50%,
+    #2c5364 100%
+  );
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* =========================================================
+   DOC CONTENT AREA (Readable Overlay)
+   ========================================================= */
+
+.theme-doc-markdown {
+  background: rgba(15, 32, 39, 0.72); /* bluish, not pure black */
+  padding: 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+
+/* Improve paragraph readability */
+.theme-doc-markdown p,
+.theme-doc-markdown li {
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* =========================================================
+   HEADINGS (Memory-friendly contrast)
+   ========================================================= */
+
+.theme-doc-markdown h1,
+.theme-doc-markdown h2,
+.theme-doc-markdown h3 {
+  color: #9ad7ff;
+}
+
+.theme-doc-markdown h2 {
+  border-bottom: 1px solid rgba(154, 215, 255, 0.2);
+  padding-bottom: 0.4rem;
+}
+
+/* =========================================================
+   SIDEBAR (Dark, calm, focused)
+   ========================================================= */
+
+.theme-doc-sidebar-container {
+  background: linear-gradient(
+    180deg,
+    #0b1f2a,
+    #0e2a38
+  );
+}
+
+.menu__link {
+  color: #cfdde5;
+}
+
+.menu__link--active {
+  background: rgba(154, 215, 255, 0.15);
+  color: #9ad7ff;
+  border-radius: 6px;
+}
+
+/* =========================================================
+   NAVBAR (Clean dark header)
+   ========================================================= */
+
+.navbar {
+  background: rgba(10, 25, 35, 0.95);
+  backdrop-filter: blur(6px);
+}
+
+.navbar__title {
+  color: #9ad7ff;
+}
+
+/* =========================================================
+   CODE BLOCKS (Critical for learning)
+   ========================================================= */
+
+.theme-code-block {
+  background: #0b1f2a;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px rgba(154, 215, 255, 0.1);
+}
+
+/* Inline code */
+code {
+  background: rgba(154, 215, 255, 0.12);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
