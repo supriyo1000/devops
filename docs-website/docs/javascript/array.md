@@ -2,11 +2,11 @@
 
 ### array.push()
 
-=> add element at the end of array 
+=> add element at the end of array and mutates the original array.
 
 ### array.pop()
 
-=> Remove last element from array
+=> Remove last element from array and mutates original array.
 
 ```ruby
 let arr = [1, 2, 3];
@@ -19,21 +19,26 @@ console.log(arr); // [1,2,3]
 
 ```
 
-### array.shift(1)
-
-=> add element at the first of array 
-
-### array.unshift()
+### array.shift()
 
 => Remove first element from array
 
+Mutates original array:
+✅ Yes
+
+### array.unshift(1)
+
+=> add element at the first of array 
+Mutates original array:
+✅ Yes
+
 ```ruby
 let arr = [2, 3];
-let k = arr.shift(1);
-let j = arr.unshift();
+let k = arr.shift();
+let j = arr.unshift(1);
 
-console.log(k) => [1,2,3]
-console.log(j) => [3]
+console.log(k) => [3]
+console.log(j) => [1,2,3]
 ```
 
 ### array.join()
@@ -54,7 +59,7 @@ console.log(fruits); => [ 'apple', 'banana', 'mango' ]
 ### array.concat() 
 
 + 👉 Merge arrays
-+ 👉 Does NOT modify original arrays
++ 👉 Does NOT modify original arrays and Returns a new array by combining existing arrays.
 
 **example-1**
 ```ruby
@@ -82,6 +87,7 @@ console.log(merged);
 + 📌 slice(start, end)
 + 👉 end not included
 + 👉 original unchanged
+To extract part of an array without mutation.
 
 ```ruby
 let arr = [10, 20, 30, 40];
@@ -113,7 +119,24 @@ console.log(copy); // [1,2,3,4]
 
 ### Array.splice()
 
+To add, remove, or replace elements in-place.
 => splice modifies original array
 
+```ruby
+//example 1
+const arr = [1, 2, 3];
+arr.splice(1,1,99);
+log(arr) => [1,99,3]
+```
 
+```ruby
+//example 2
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi");
+log(fruits) => ["Banana", "Orange", "Lemon", "Kiwi", "Apple", "Mango"]
+```
 
+|slice|splice|
+|-----|------|
+|does not mutates the original array|mutates the original array|
+|extract part of an array| add,remove,delete elements from array|
