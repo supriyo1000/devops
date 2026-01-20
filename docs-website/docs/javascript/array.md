@@ -140,3 +140,43 @@ log(fruits) => ["Banana", "Orange", "Lemon", "Kiwi", "Apple", "Mango"]
 |-----|------|
 |does not mutates the original array|mutates the original array|
 |extract part of an array| add,remove,delete elements from array|
+
+### Array.toString()
+
+it returns the elements as a comma separated string.
+Does not mutates the original array
+
+```ruby
+let nums = [1,2,3];
+let x = nums.toString();
+log(x)=>1,2,3
+log(nums)=>[1,2,3]
+```
+
+### Array.at()
+it returns the indexed element from an array.it doesnot mutates the original array.
+
+```ruby
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fruit = fruits.at(2);
+console.log(fruit); => // Apple
+```
+
+### Array.flat()
+it is usefull when you want to convert multi dimensional array to one dimensional array.
+does not mutates the original array.
+
+```ruby
+const myArr = [[1,2],[3,4],[5,6]];
+const newArr = myArr.flat();
+log(newArr) => [1,2,3,4,5,6]
+```
+
+### Array.isArray()
+
+it returns true if array otherwise false.
+
+```ruby
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+console.log(Array.isArray(fruits)); => true
+```
