@@ -99,27 +99,96 @@ now you have :
 
 ## Merge (Bring branches together)
 
-![Tux, the Linux mascot](/static/img/git-three-way-merging.png)
+### Example 1 :
 
-+ Combines branches using a merge commit.
-+ safe for shared branches.
-+ preserve full history.
-+ can create messy logs
-
+**Situation** :
 ```ruby
-git checkout feature/login
+A → B   (main)
+     \
+      C → D   (feature)
+```
++ feature is created from B.
++ main branch is still point to B.
+
+**Command** :
+```ruby
+git checkout feature
 git merge main
 ```
-Whats happens :
-+ git creates a new merge commit
-+ history keeps both paths
 
-Use :
+**Output** :
+```
+A → B → C → D   (feature)
+```
+
+No merege commit needed(fast forward).
+
+**Why?**
+Because git just moved the pointer forward.
+
+
+### Example 2 :
+
+**Situation** :
+```ruby
+A → B → E   (main)
+     \
+      C → D   (feature)
+```
+
+**Command** :
+```
+git checkout feature
+git merge main
+```
+
+**Output** :
+```
+A → B → E
+     \     \
+      C → D → M
+```
+
++ M = merge commit.
++ Now M has two parents D and E.
+
+### Example 3 :
+
+**Situation** :
+```
+A → B → E → F → G   (main)
+     \
+      C → D        (feature – outdated)
+```
+
+**Command** :
+```
+git checkout feature
+git merge main
+```
+
+**Output** :
+```
+A → B → E → F → G
+     \           \
+      C → D → → → M
+```
++ git creates a merge commit M.
++ now feature includes all main changes.
+
+### 🧠 IMPORTANT RULE
+
++ When main has new commits, merge creates a new commit.
++ When main does not have new commit, git moved the pointer to final commit.
++ preserve full history.
+
+**Check** :
 ```ruby
 git log --oneline --graph
 ```
 
 you will see the merge.
+
 
 ## REBASE (Clean)
 Only do this on feature branch
@@ -143,7 +212,7 @@ git rebase main
 ```
 
 ```
-A → B → E → F → G → C' → D'  (rebased feature branch)
+A → B → E → F → G → C → D  (rebased feature branch)
 ```
 
 + Rewrites commit history
@@ -154,7 +223,66 @@ A → B → E → F → G → C' → D'  (rebased feature branch)
 
 + Should not be used on shared branches
 
+## Interactive Rebase
+
+interactive rebase is used to :
++ squash commits
++ edit commit messages
++ reorder commits 
+
+#### Example :
+
+You have 5 messy commits:
+```ruby
+fix
+fix again
+oops
+final fix
+```
+
+#### Run :
+```
+git rebase -i HEAD~4
+```
+
+#### You can :
++ squash them into 1 clean commit
++ rename commit message
 
 
+## 🔥 MERGE CONFLICT
+
+### When does conflict happen?
+
+it happens when :
++ same file
++ same line
++ modified in both branches
+
+### what to do :
++ open file
++ decide correct content
++ remove conflict marker
++ save then run 
+
+```
+git add app.txt
+git commit
+```
+
+### Q1. What happens internally during merge?
+Git creates a new merge commit with two parent commit and preserve full history.
+
+### Q2. When is fast-forward merge possible?
+when the base branch has no new commit. git only moves the pointer to new commit when merge.
+
+### Q3. What causes merge conflicts?
+when same files and same lines are modified in both branch.
+
+### Q4. How do you resolve merge conflicts?
+By manually editing conflict files , resolve conflict marker then stage then commit.
+
+### Q5. Merge vs Rebase — when do you use merge?
+when we are working in shared branch. because it does not rewrites history. 
 
 
