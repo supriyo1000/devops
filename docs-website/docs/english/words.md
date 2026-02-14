@@ -19,3 +19,7 @@ would is used to **request** or **offer** or **imaginary situation**.
 + would you please help me in that task?
 + i would travel more if i had money.
 + would you like some tea?
+
+## Might
+
+## encourage
