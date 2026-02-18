@@ -113,3 +113,77 @@ for(let num of arr){
 console.log(elm); // 4
 console.log(max); // 4
 ```
+
+## Maximum sum of 3 consecutive numbers
+
+You only add 3 numbers at a time that are side-by-side
+
+#### Example 1 :
+```ruby
+let arr = [2,1,5,1,3,2]
+
+function maxSum(arr,k){
+    let window = 0;
+    for (let i = 0; i < k; i++) {
+        window += arr[i]
+    }
+    let max = window;
+
+    for (let i = k; i < arr.length; i++) {
+        window = window - arr[i-k] + arr[i];
+        max = Math.max(max, window);
+    }
+
+    return max;
+}
+
+console.log(maxSum(arr,3)); // 9
+```
+
+#### Example 2 :
+
+```ruby
+let arr = [2,1,5,1,3,2]
+
+function maxSum(arr,k){
+     let max = arr.map((_,i)=> arr.slice(i , i+k)).filter(item => item.length === k).map(sub => sub.reduce((a,b)=> a+b));
+     return Math.max(...max)
+}
+
+console.log(maxSum(arr,3)); // 9
+```
+
+## Group orders by user.
+
+#### Example :
+```ruby
+const orders = [
+  { orderId: 1, user: "Amit",   product: "Phone",  amount: 20000 },
+  { orderId: 2, user: "Rahul",  product: "Laptop", amount: 55000 },
+  { orderId: 3, user: "Amit",   product: "Mouse",  amount: 500 },
+  { orderId: 4, user: "Rohit",  product: "Keyboard", amount: 1500 },
+  { orderId: 5, user: "Rahul",  product: "Charger", amount: 800 }
+];
+
+let group = orders.reduce((acc , curr)=>{
+    if(!acc[curr.user]){
+        acc[curr.user] = []
+    }
+    acc[curr.user].push(curr)
+
+    return acc;
+},{});
+
+console.log(group);
+```
+
+```ruby
+You are given a sorted array:
+
+[1, 2, 3, 4, 6, 8, 9]
+
+Find if any two numbers add up to:
+target = 10
+
+
+```
