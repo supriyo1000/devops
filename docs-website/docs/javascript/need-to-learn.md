@@ -10,6 +10,8 @@
 
 ## 5. Object
 
+## 6. spread and rest operator
+
 
 # Need to Practice
 
