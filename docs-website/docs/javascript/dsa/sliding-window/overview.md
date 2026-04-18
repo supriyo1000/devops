@@ -105,6 +105,86 @@ function uniqueSubstr(str) {
 console.log(uniqueSubstr("abcabcbb"));
 ```
 
+#### Example-3 : Maximum Average
+
+```ruby
+let arr = [1,12,-5,-6,50,3]
+let k = 4
+
+function maxavg(arr , k){
+  let sum = 0;
+
+  for (let i = 0; i < k; i++) {
+    sum += arr[i];
+  }
+
+  let max = sum;
+
+  for (let i = k; i < arr.length; i++) {
+    sum = sum - arr[i-k] + arr[i];
+    max = Math.max(max,sum);
+  }
+
+  return max/3;
+}
+
+console.log(maxavg(arr , k));
+```
+
+#### Example-4 : Count Subarrays of Size K
+Count how many subarrays of size k have sum > target
+
+```ruby
+let arr = [1,12,-5,-6,50,3]
+let k = 3
+let target = 20
+
+function maxavg(arr , k , target){
+  let sum = 0;
+  let maxcount = 0;
+
+  for (let i = 0; i < k; i++) {
+    sum += arr[i];
+  }
+
+  for (let i = k; i < arr.length; i++) {
+    sum = sum - arr[i-k] + arr[i];
+    if(sum > target) {
+      maxcount++;
+    }
+  }
+
+  return maxcount;
+}
+
+console.log(maxavg(arr , k , target));
+```
+
+#### Example-5 : Minimum Length Subarray ≥ Target
+👉 Find smallest subarray with sum ≥ target
+
+let arr = [2,3,1,2,4,3 , 7]
+let target = 7
+
+function minlensubarr(arr , target){
+  let left = 0;
+  let sum = 0;
+  let minlen = Infinity;
+
+  for (let right = 0; right < arr.length; right++) {
+    sum += arr[right];
+    
+    while (sum >= target ) {
+      minlen = Math.min(minlen , right - left + 1 );
+      sum-= arr[left];
+      left++;
+    }
+  }
+
+  return minlen === Infinity ? 0 : minlen;
+}
+
+console.log(minlensubarr(arr , target));
 
 
 
