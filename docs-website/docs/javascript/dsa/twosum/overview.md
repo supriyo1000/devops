@@ -121,4 +121,24 @@ function movezero(arr) {
 console.log(movezero([5,0, 1,0,0, 0, 3, 12]));
 ```
 
+#### Example 4: Reverse String
 
+```ruby
+function reverseString (str) {
+  str = str.split("");
+  
+  let left = 0;
+  let right = str.length - 1;
+
+  while (left < right) {
+    [str[left] , str[right]] = [str[right] , str[left]];
+    left++;
+    right--;
+  }
+
+  return str.join("");
+  
+}
+
+console.log(reverseString("sensex"));
+```
