@@ -205,3 +205,82 @@ public class main {
 }
 ```
 
+## Stack + Queue (🔥 Core DSA Tools)
+
+last added and first removed.
+
+### Basic Example
+
+```ruby
+public static void main(String[] args) {
+    Stack<Integer> stack = new Stack<>();
+    stack.push(10);
+    stack.push(20);
+    stack.push(30);
+
+    System.out.println(stack); // [10, 20, 30]
+    System.out.println(stack.pop()); // remove top 30
+    System.out.println(stack.peek()); // see top 20
+    System.out.println(stack); // [10, 20]
+}
+```
+
+### Important Methods
+
++ stack.push(); // add
++ stack.pop(); // remove top
++ stack.peek(); // show top
++ stack.isEmpty(); // check
+
+#### Problem 1: Reverse String (Stack)
+
+```ruby
+import java.util.Stack;
+
+public class main {
+    
+    static String reverseString(String str) {
+        Stack<Character> stack = new Stack<>();
+
+        for(char s : str.toCharArray()) {
+            stack.push(s);
+        }
+
+        String result = "";
+        while (!stack.isEmpty()) {
+            result += stack.pop();
+        }
+        return result;
+    }
+    public static void main(String[] args) {
+        String result = reverseString("hello");
+        System.out.println(result);
+    }
+}
+```
+
+## Queue (FIFO – First In First Out)
+
+first comes --> first served
+
+### Basic Example
+
+```ruby
+Queue<Integer> num = new LinkedList<>();
+num.add(1);
+num.add(2);
+num.add(3);
+System.out.println(num); // [1, 2, 3]
+System.out.println(num.poll()); // 1
+System.out.println(num.peek()); // 2
+System.out.println(num); // [2, 3]
+```
+
+### 🔥 Important Methods
+
++ q.add(x);    // enqueue
++ q.poll();    // remove front
++ q.peek();    // see front
++ q.isEmpty();
+
+#### Problem 3: First Non-Repeating Character (Queue + Map)
