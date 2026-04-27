@@ -171,3 +171,80 @@ for(let keyval in Object.entries(obj)){
 }
 ```
 
+## Deep Copy
+
+Rule to follow :
+
++ if it is primitive then copy directly
++ if object/array then creates a new one and go deeper.
+
+#### Example 1 :
+
+```ruby
+
+const user = {
+  name: "supriyo",
+  age :28,
+  location: {
+    dis : "kolkata",
+    pin : 700060,
+    area : ["behala" , "parnashree"]
+  }
+}
+
+
+function deepcopy(obj) {
+  if(obj === null || typeof obj !== 'object') {
+    return obj;
+  }
+
+  let copy = Array.isArray(obj) ? [] : {};
+
+  for(let key in obj){
+    copy[key] = deepcopy(obj[key]);
+  }
+
+  return copy;
+}
+
+let copy = deepcopy(user);
+
+copy.location.pin = 700038
+
+console.log(copy);
+
+console.log(user);
+```
+
+```ruby
+let copy2 = structuredClone(user)
+copy2.location.pin = 700051
+copy2.location.area.push("ajanta");
+console.log(copy2);
+console.log(user);
+```
+
+```ruby
+function deepcopyMap(obj , map = new WeakMap()) {
+    if(obj === null || typeof obj !== 'object') return obj;
+    if(map.get(obj)) return map.get(obj);
+
+    let copy = Array.isArray(obj) ? [] : {};
+    map.set(obj , copy);
+
+    for (let key in obj) {
+      copy[key] = deepcopyMap(obj[key] , map);
+    }
+
+    return copy;
+}
+
+let copy3 = deepcopyMap(user);
+
+copy3.location.area.push("haldia");
+
+console.log(copy3);
+console.log(user);
+```
+
+

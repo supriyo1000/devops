@@ -150,13 +150,91 @@ Original remains:
 
 {a:1, b:{c:2}}
 ## ✅ 15. Implement map / filter / reduce
-Example (map)
 
-Input:
+### 🟢 MAP Problems (Transformation)
 
-arr = [1,2,3]
-map(x => x*2)
+```
+1. Double numbers
+Input:  [1,2,3,4]
+Output: [2,4,6,8]
+```
+```
+2. Square numbers
+Input:  [2,3,4]
+Output: [4,9,16]
+```
+```
+3. Convert to string
+Input:  [1,2,3]
+Output: ["1","2","3"]
+```
+```
+4. Add 10 to each
+Input:  [5,10,15]
+Output: [15,20,25]
+```
+```
+5. Extract property
+Input:  [{name:"a"}, {name:"b"}]
+Output: ["a","b"]
+```
 
-Output:
+### 🟡 FILTER Problems (Selection)
 
-[2,4,6]
+👉 Think: “keep only valid ones”
+
+```
+6. Even numbers
+Input:  [1,2,3,4,5]
+Output: [2,4]
+```
+```
+7. Numbers > 10
+Input:  [5,12,8,20]
+Output: [12,20]
+```
+```
+8. Remove null/undefined
+Input:  [1,null,2,undefined,3]
+Output: [1,2,3]
+```
+```
+9. Words longer than 3 chars
+Input:  ["hi","hello","hey"]
+Output: ["hello"]
+```
+```
+10. Filter objects
+Input:  [{age:10},{age:20}]
+Output: [{age:20}]
+```
+
+### 🔴 REDUCE Problems (Aggregation)
+
+👉 Think: “combine into one result”
+
+```
+11. Sum of array
+Input:  [1,2,3,4]
+Output: 10
+```
+```
+12. Multiply all numbers
+Input:  [1,2,3,4]
+Output: 24
+```
+```
+13. Count elements
+Input:  ["a","b","a"]
+Output: {a:2, b:1}
+```
+```
+14. Find max
+Input:  [5,10,2]
+Output: 10
+```
+```
+15. Flatten array
+Input:  [[1,2],[3,4]]
+Output: [1,2,3,4]
+```
