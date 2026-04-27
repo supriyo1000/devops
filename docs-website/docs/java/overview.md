@@ -205,6 +205,171 @@ public class main {
 }
 ```
 
+## Recursion
+
+a function calling itself.
+
+### Rule
+
+Every recursion must have :
+
++ __Base case__ : stops recursion
++ __Recursive call__ : smaller problem
+
+without base case loops goes to infinite.
+
+```ruby
+function test() {
+    // base case
+    test();
+}
+```
+
+#### Example - 1 : Print Numbers 1 to N
+
+```ruby
+public class main {
+
+    static void print(int n){
+        if(n == 0) return;
+        print(n-1);
+        System.out.println(n);
+    }
+    public static void main(String[] args) {
+        int n = 9;
+        print(n);
+    }
+}
+```
+
+#### Example - 2 : Factorial
+
+```ruby
+public class main {
+
+    static int factorial(int n){
+        if(n == 1) return 1;
+        
+        return n * factorial(n-1);
+    }
+    public static void main(String[] args) {
+        int n = 4;
+        System.out.println(factorial(n));
+    }
+}
+```
+
+#### Example - 3 : Sum of N numbers
+
+```ruby
+public class main {
+
+    static int sum(int n){
+        if(n == 0) return 0;
+        
+        return n + sum(n-1);
+    }
+    public static void main(String[] args) {
+        int n = 4;
+        System.out.println(sum(n));
+    }
+}
+```
+
+## ArrayList + List + Sorting (Collections)
+
+Problem with array :
++ fixed size
+
+Solution :
++ ArrayList
+
+Internally ArrayList uses array, when full creates bigger array.
+
+#### Basic Example
+
+```ruby
+ArrayList<Integer> arr = new ArrayList<>();
+arr.add(1);
+arr.add(2);
+arr.add(3);
+System.out.println(arr);
+```
+
+### Important Methods
+
+```ruby
+arr.add(value);
+arr.get(index);
+arr.remove(index);
+arr.set(index , value); // update
+arr.size()
+```
+
+### Loop
+
+```ruby
+for(int i : arr) {
+    System.out.println(i);
+}
+```
+
+## List Interface
+
+instead of
+
+```ruby
+ArrayList<Integer> list = new ArrayList<>();
+```
+
+use
+
+```ruby
+List<Integer> list = new ArrayList<>();
+```
+
+because if you want to change the type , no code changes needed.
+
+```ruby
+List<Interger> list = new LinkedList<>();
+```
+
+#### problem 1 : Store Even Numbers
+
+```ruby
+static List<Integer> evenNum(int[] arr){
+    List<Integer> result = new ArrayList<>();
+
+    for(int elm : arr) {
+        if((elm % 2) == 0) {
+            result.add(elm);
+        }
+    }
+
+    return result;
+}
+```
+
+## Sorting
+
+```ruby
+List<Integer> list = new ArrayList<>();
+list.add(5);
+list.add(2);
+list.add(8);
+Collections.sort(list);
+System.out.println(list);
+```
+
+### Decending order
+
+
+```ruby
+Collections.sort(list , Collections.reverseOrder());
+```
+
+
+
 ## Stack + Queue (🔥 Core DSA Tools)
 
 last added and first removed.
