@@ -139,5 +139,73 @@ Integer x = 10;
 x.intValue() → 10
 ```
 
+### 11. String[]::new
 
+used to create a new array of Strings
 
++ stream api to array of String.
++ Mapping and Collecting
+
+### 12. chars()
+
+gives IntStream
+
+"ab" -> [97,98]
+
+### 13. c -> (char)c
+
+intstream to character
+
+[97,98] -> "ab"
+
+### HOW TO FIND SOLUTION IN EXAMS/INTERVIEWS
+
+Never think about syntax first.
+
+Think like this:
+
+PROBLEM
+```ruby
+["ab","cd"] -> ['A','B','C','D']
+```
+
+#### STEP 1
+
+Need characters from each string.
+```
+String -> many characters
+```
+So brain says:
+```
+flatMap
+```
+
+#### STEP 2
+
+How to get chars?
+```
+chars()
+```
+
+#### STEP 3
+
+chars() gives numbers.
+
+Need character.
+```
+mapToObj(c -> (char)c)
+```
+
+#### STEP 4
+
+Need uppercase.
+```
+map(Character::toUpperCase)
+```
+
+#### STEP 5
+
+Need List.
+```
+collect(Collectors.toList())
+```
