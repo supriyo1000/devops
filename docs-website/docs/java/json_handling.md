@@ -24,6 +24,7 @@ org.json
 
 THIS is called:
 
+<<<<<<< HEAD
 #### 👉 Serialization
 
 💥 Example Class
@@ -72,4 +73,9 @@ THIS is called:
 
 #### 👉 Deserialization
 **cant understand**
+=======
+### 👉 Serialization
+
+
+>>>>>>> 31959fb (started json)
 
