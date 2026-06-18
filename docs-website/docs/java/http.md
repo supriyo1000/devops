@@ -406,3 +406,114 @@ public class App {
     }
 }
 ```
+
+### Content-Type Header
+```
+.header(
+    "Content-Type",
+    "application/json")
+```
+
+Tells server:
+```
+I am sending JSON
+```
+
+Without this, many APIs reject requests.
+
+### POST Method
+```
+.POST(
+    HttpRequest.BodyPublishers.ofString(json))
+```
+
+Equivalent HTTP request:
+```
+POST /posts
+
+Content-Type: application/json
+
+{
+  "title":"Java Learning",
+  "body":"Learning HttpClient",
+  "userId":1
+}
+```
+
+Expected Response
+
+Status:
+
+201
+
+Meaning:
+
+Created Successfully
+
+Response:
+
+{
+  "title":"Java Learning",
+  "body":"Learning HttpClient",
+  "userId":1,
+  "id":101
+}
+#### Common Status Codes for POST
+
+|Code	|Meaning|
+|-------|-------|
+|200	|Success|
+|201	|Created|
+|400	|Invalid Request|
+|401	|Unauthorized|
+|403	|Forbidden|
+|500	|Server Error|
+
+### Sending Authorization Header
+
+Many APIs require a token.
+
+```
+HttpRequest request =
+        HttpRequest.newBuilder()
+        .uri(URI.create(url))
+        .header("Content-Type",
+                "application/json")
+        .header("Authorization",
+                "Bearer myToken")
+        .POST(
+            HttpRequest.BodyPublishers.ofString(json))
+        .build();
+```
+
+Equivalent :
+```
+Authorization: Bearer myToken
+```
+
+#### Difference Between GET and POST?
+|GET	|POST|
+|-------|----|
+|Fetch data	|Send/Create data|
+|Usually no body	|Usually contains body|
+|Can be cached	|Usually not cached|
+|Safe operation	|Changes data|
+
+#### Why Content-Type Header?
+
+Tells the server what format you're sending.
+
+Example:
+```
+Content-Type: application/json
+```
+
+#### What is BodyPublisher?
+````
+HttpRequest.BodyPublishers.ofString(json)
+```
+
+Converts your String into an HTTP request body.
+
+
+
