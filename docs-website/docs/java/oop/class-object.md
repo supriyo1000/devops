@@ -655,3 +655,4 @@ class Rectangle{
 }
 ```
 Area is ready immediately.
+
