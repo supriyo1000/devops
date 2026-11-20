@@ -304,3 +304,136 @@ public class User {
 #### @JsonAnyGetter serializes map entries as normal JSON properties.
 
 #### @JsonAnySetter captures otherwise-unmapped JSON properties into the map.
+
+
+# 13. @JsonView – Different JSON Responses
+Suppose you have an employee API.
+
+Sometimes you want to expose basic information, while other times you want to expose additional information.
+
+You can use @JsonView.
+
+
+### Step 1: Define views
+
+```
+public class Views {
+
+    public static class Public {}
+
+    public static class Internal extends Public {}
+}
+```
+
+### Step 2: Apply views
+
+```
+public class Employee {
+
+    @JsonView(Views.Public.class)
+    private String name;
+
+    @JsonView(Views.Internal.class)
+    private String salary;
+
+    @JsonView(Views.Internal.class)
+    private String department;
+}
+```
+
+### Step 3: Serialize using a view
+
+```
+String json = mapper
+        .writerWithView(Views.Public.class)
+        .writeValueAsString(employee);
+
+
+Public response:
+{
+    "name": "Supriyo"
+}
+
+
+Internal response:
+{
+    "name": "Supriyo",
+    "salary": "50000",
+    "department": "IT"
+}
+```
+
+Use case: When different API responses need different visible properties.
+
+__Note:__ @JsonView is a serialization mechanism, not a replacement for authorization or access control.
+
+
+## 14. @JsonFilter – Dynamic Property Filtering
+
+- __@JsonView__ uses predefined views.
+- __@JsonFilter__ allows properties to be selected dynamically during serialization.
+
+Example:
+
+```
+@JsonFilter("userFilter")
+public class User {
+
+    private String name;
+    private int age;
+    private String email;
+}
+```
+
+### Configure the filter:
+
+```
+FilterProvider filters =
+    new SimpleFilterProvider()
+        .addFilter(
+            "userFilter",
+            SimpleBeanPropertyFilter
+                .filterOutAllExcept("name", "email")
+        );
+
+String json = mapper
+    .writer(filters)
+    .writeValueAsString(user);
+
+
+Output:
+{
+    "name": "Supriyo",
+    "email": "supriyo@example.com"
+}
+```
+
+Use case: Dynamic API response fields depending on the requested output.
+
+## 15. MixIn Annotations
+Sometimes you cannot modify the original Java class.
+
+For example, you are using a third-party library class.
+
+You want to ignore its password property without modifying its source code.
+
+Use MixIn annotations.
+
+### Create a MixIn:
+
+```
+abstract class UserMixin {
+
+    @JsonIgnore
+    abstract String getPassword();
+}
+```
+
+#### Register it:
+```
+mapper.addMixIn(User.class, UserMixin.class);
+```
+
+Now Jackson applies the annotation from the MixIn to the original class.
+
+Use case: Customize third-party classes without changing their source code.
